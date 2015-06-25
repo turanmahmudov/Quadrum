@@ -1,0 +1,41 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Main.qml</file>
+        <file>js/scripts.js</file>
+        <file>ui/LoginPage.qml</file>
+        <file>main.cpp</file>
+        <file>components/FindAPlace.qml</file>
+        <file>components/WhatsGoodHere.qml</file>
+        <file>components/Activity.qml</file>
+        <file>components/ListItemWithActions.qml</file>
+        <file>components/CheckinDetails.qml</file>
+        <file>components/CheckinLikes.qml</file>
+        <file>components/VenuePage.qml</file>
+        <file>imgs/special.png</file>
+        <file>components/VenueDetailsPage.qml</file>
+        <file>components/Checkin.qml</file>
+        <file>components/LeaveNote.qml</file>
+        <file>imgs/coffee_img.png</file>
+        <file>imgs/coffee.jpg</file>
+        <file>imgs/entertainment_img.png</file>
+        <file>imgs/entertainment.jpg</file>
+        <file>imgs/food_img.png</file>
+        <file>imgs/food.jpg</file>
+        <file>imgs/like.svg</file>
+        <file>imgs/liked.png</file>
+        <file>imgs/location.svg</file>
+        <file>imgs/menu.svg</file>
+        <file>imgs/more.svg</file>
+        <file>imgs/nightlife_img.png</file>
+        <file>imgs/nightlife.jpg</file>
+        <file>imgs/outdoors_img.png</file>
+        <file>imgs/outdoors.jpg</file>
+        <file>imgs/phone.svg</file>
+        <file>imgs/send.svg</file>
+        <file>imgs/shopping_img.png</file>
+        <file>imgs/shopping.jpg</file>
+        <file>components/CategoryPage.qml</file>
+        <file>components/Me.qml</file>
+        <file>components/User.qml</file>
+    </qresource>
+</RCC>

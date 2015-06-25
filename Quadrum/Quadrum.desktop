@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Quadrum
+Exec=Quadrum
+Icon=Quadrum/Quadrum.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+

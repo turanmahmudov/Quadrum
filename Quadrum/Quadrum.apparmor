@@ -1,0 +1,11 @@
+{
+    "policy_groups": [
+        "networking",
+        "webview",
+        "location",
+        "content_exchange",
+        "content_exchange_source",
+        "usermetrics"
+    ],
+    "policy_version": 1.2
+}

@@ -1,0 +1,15 @@
+{
+    "name": "com.ubuntu.developer.turan.mahmudov.quadrum",
+    "description": "Unofficial Native Foursquare Client",
+    "architecture": "@CLICK_ARCH@",
+    "title": "Quadrum",
+    "hooks": {
+        "Quadrum": {
+            "apparmor": "Quadrum/Quadrum.apparmor",
+            "desktop": "Quadrum/Quadrum.desktop"
+        }
+    },
+    "version": "0.1",
+    "maintainer": "Turan Mahmudov <turan.mahmudov@gmail.com>",
+    "framework": "ubuntu-sdk-14.10"
+}
