@@ -5,11 +5,43 @@ import Ubuntu.Components.ListItems 1.0 as ListItem
 import Ubuntu.Content 1.1
 import "../js/scripts.js" as Scripts
 
+//import Foursquare 1.0
+
 Item {
     anchors {
         margins: units.gu(1)
         fill: parent
     }
+
+    /*Uploader {
+        id: uploader
+    }*/
+
+    /*Button {
+        id: addPicture
+        anchors.top: parent.top
+        anchors.left: parent.left
+        width: parent.width/3 - units.gu(2)
+        text: "Add picture"
+        onClicked: {
+            pageStack.push(importpicturepage);
+        }
+    }
+
+    Button {
+        id: removePicture
+        visible: false
+        anchors.top: parent.top
+        anchors.left: parent.left
+        width: parent.width/3 - units.gu(2)
+        text: "Remove picture"
+        onClicked: {
+            user_image.source = '';
+            userimage.visible = false;
+            removePicture.visible = false;
+            addPicture.visible = true;
+        }
+    }*/
 
     // Others
     property string id
@@ -34,22 +66,24 @@ Item {
         checkindetails.checkin_details(id);
         pageStack.push(checkinDetails);
     }
-    /*
+
     function addImportedImage(contentItem) {
         console.log("CONTENT IMPORTED:", contentItem.url.toString().replace("file://", ""));
         var filepath = contentItem.url.toString().replace("file://", "");
         var fileparts = filepath.split("/");
         var filename = fileparts.pop();
         console.log("Filename: "+filename);
-        user_image.source = filepath;
-        checkinpage.fileUrl = filepath;
+        user_image.source = contentItem.url;
         userimage.visible = true;
         addPicture.visible = false;
         removePicture.visible = true;
+
+        checkinpage.fileUrl = String(contentItem.url).replace('file://', '')
     }
-    */
+
 
     Column {
+        anchors.top: addPicture.bottom
         width: parent.width
 
         TextArea {
@@ -61,9 +95,24 @@ Item {
             placeholderText: i18n.tr("What are you up to?")
         }
 
+        Rectangle {
+            anchors.top: comment.bottom
+            anchors.left: parent.left
+            anchors.topMargin: units.gu(1)
+            id: userimage
+            visible: false
+            width:100
+            height: 100
+            Image {
+                id: user_image
+                width: 100
+                height: 100
+            }
+        }
+
         Item {
             width: parent.width
-            height: units.gu(1)
+            height: units.gu(2)
         }
 
         Row {
@@ -135,7 +184,7 @@ Item {
                     var token = Scripts.getKey('access_token');
                     var text = comment.getText(0, 140);
                     //console.log('ehey:' + fileurl);
-                    Scripts.add_checkin(checkinpage.id, token, text, checkinpage.fileUrl, checkinpage.facebook, checkinpage.twitter);
+                    Scripts.add_checkin(checkinpage.id, token, text, checkinpage.facebook, checkinpage.twitter, checkinpage.fileUrl);
                 }
             }
         }

@@ -37,5 +37,6 @@
         <file>components/CategoryPage.qml</file>
         <file>components/Me.qml</file>
         <file>components/User.qml</file>
+        <file>components/ImportPicturePage.qml</file>
     </qresource>
 </RCC>

@@ -2,13 +2,13 @@
 #include <QQmlApplicationEngine>
 #include <QQuickView>
 
-//#include "uploader.h"
+#include "uploader.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    // qmlRegisterType<Uploader>("Imgur", 1, 0, "Uploader");
+    //qmlRegisterType<Uploader>("Foursquare", 1, 0, "Uploader");
 
     QQuickView view;
     view.setSource(QUrl(QStringLiteral("qrc:///Main.qml")));

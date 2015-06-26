@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<application id="quadrum">
+  <description>Quadrum</description>
+  <desktop-entry>Quadrum.desktop</desktop-entry>
+  <translations>account-plugins</translations>
+  <services>
+    <service id="quadrum">
+      <description>Publish your pictures to Facebook</description>
+    </service>
+  </services>
+  <service-types>
+    <service-type id="quadrum-quadrum">
+      <description>Publish your pictures to your favorite site</description>
+    </service-type>
+  </service-types>
+</application>

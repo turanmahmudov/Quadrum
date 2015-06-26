@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service id="picasa">
+  <type>sharing</type>
+  <name>Foursquare</name>
+  <icon>foursquare</icon>
+  <provider>foursquare</provider>
+  <translations>account-plugins</translations>
+  <template>
+    <group name="auth/oauth2/user_agent">
+      <setting type="as" name="Scope">["https://picasaweb.google.com/data/"]</setting>
+    </group>
+    <setting type="i" name="max-resolution">2048</setting>
+  </template>
+</service>

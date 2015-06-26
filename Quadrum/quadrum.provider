@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<provider id="quadrum">
+  <name>Foursquare</name>
+  <icon>foursquare</icon>
+  <translations>account-plugins</translations>
+  <domains>.*foursquare\.com</domains>
+  <plugin>generic-oauth</plugin>
+  <single-account>true</single-account>
+  <template>
+    <group name="auth">
+      <setting name="method">oauth2</setting>
+      <setting name="mechanism">user_agent</setting>
+      <group name="oauth2">
+        <group name="user_agent">
+          <setting name="Host">www.facebook.com</setting>
+          <setting name="AuthPath">/dialog/oauth</setting>
+          <setting name="RedirectUri">https://www.facebook.com/connect/login_success.html</setting>
+          <setting name="Display">popup</setting>
+          <setting type="as" name="Scope">['publish_stream','status_update','user_photos']</setting>
+          <setting name="ClientId">412471239412</setting>
+          <setting type="as" name="AllowedSchemes">['https','http']</setting>
+        </group>
+      </group>
+    </group>
+  </template>
+</provider>

@@ -21,10 +21,9 @@ QString Uploader::fileName() const
     return m_fileName;
 }
 
-void Uploader::uploadImage(const QString &fileName)
+void Uploader::uploadImage(const QString &fileName, const QString &token, const QString &checkinId)
 {
     m_fileName = fileName;
-    emit fileNameChanged();
 
     QImage image(fileName);
     QByteArray imageData;
@@ -32,20 +31,21 @@ void Uploader::uploadImage(const QString &fileName)
     image.save(&buffer, "PNG");
 
 
-//    QUrlQuery query;
-//    query.addQueryItem("image", );
+    QUrlQuery query;
+    query.addQueryItem("oauth_token", token);
+    query.addQueryItem("checkinId", checkinId);
 
-    QUrl url("https://api.imgur.com/3/image");
-//    url.setQuery(query);
+    QUrl url("https://api.foursquare.com/v2/photos/add");
+    url.setQuery(query);
 
     QNetworkRequest request(url);
-    request.setRawHeader(QByteArray("Authorization"), QString("Client-ID %1").arg(clientId).toLatin1());
+    request.setHeader(QNetworkRequest::ContentTypeHeader,
+        "application/x-www-form-urlencoded");
     QNetworkReply *reply = m_manager->post(request, imageData.toBase64());
 
     connect(reply, &QNetworkReply::finished, this, &Uploader::uploadFinished);
 
     m_busy = true;
-    emit busyChanged();
 }
 
 bool Uploader::busy() const
@@ -74,12 +74,11 @@ void Uploader::uploadFinished()
     QJsonDocument jsonDoc = QJsonDocument::fromJson(data, &error);
 
     m_busy = false;
-    emit busyChanged();
 
     if (error.error != QJsonParseError::NoError) {
         m_error = "Network error uploading to imgur";
-        emit errorChanged();
-        emit finished();
+        //emit errorChanged();
+        //emit finished();
         return;
     }
 
@@ -117,14 +116,14 @@ void Uploader::uploadFinished()
     QVariantMap responseMap = jsonDoc.toVariant().toMap();
     if (!responseMap.contains("success") || !responseMap.value("success").toBool()) {
         m_error = "Error uploading to imgur.com";
-        emit errorChanged();
-        emit finished();
+        //emit errorChanged();
+        //emit finished();
         return;
     }
 
     QVariantMap dataMap = responseMap.value("data").toMap();
 
     m_link = dataMap.value("link").toString();
-    emit finished();
+    //emit finished();
 
 }

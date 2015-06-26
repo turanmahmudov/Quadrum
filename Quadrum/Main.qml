@@ -6,6 +6,7 @@ import QtPositioning 5.2
 import UserMetrics 0.1
 import Ubuntu.Components.Popups 1.0
 import Ubuntu.Components.ListItems 0.1 as ListItem
+import Ubuntu.OnlineAccounts 0.1
 import "components"
 import "ui"
 import "js/scripts.js" as Scripts
@@ -31,6 +32,34 @@ MainView {
     height: units.gu(75)
 
     property var coord: {'latitude':positionSource.position.coordinate.latitude, 'longitude':positionSource.position.coordinate.longitude}
+
+    AccountServiceModel {
+        id: accounts
+        service: "quadrum"
+    }
+    ListView {
+        id: listView
+        anchors.fill: parent
+        model: accounts
+        delegate: Item {
+            width: parent.width
+            height: 60
+            AccountService {
+                id: accts
+                objectHandle: accountServiceHandle
+                onAuthenticated: { console.log("Access token is " + reply.AccessToken) }
+                onAuthenticationError: { console.log("Authentication failed, code " + error.code) }
+            }
+            Text {
+                anchors.fill: parent
+                text: providerName + ": " + displayName
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: accts.authenticate(null)
+                }
+            }
+        }
+    }
 
     PositionSource {
         id: positionSource
@@ -216,6 +245,11 @@ MainView {
             anchors.fill:parent
         }
         head.actions: []
+    }
+
+    ImportPicturePage {
+        id:importpicturepage
+        visible: false
     }
 
     Page {

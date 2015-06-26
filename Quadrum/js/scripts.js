@@ -51,6 +51,7 @@ function deleteKey(key) {
 
 // What's good here
 function nearby_places(lat, lng, token) {
+    console.log(lat)
     whatsgoodhere.finished = false;
     var url = 'https://api.foursquare.com/v2/venues/search?ll='+lat+','+lng+'&oauth_token='+token+'&v=20140926&limit=10';
 
@@ -1099,7 +1100,7 @@ function venue_more_details(venue_id, token, venueArray) {
 }
 
 // Add checkin
-function add_checkin(venue_id, token, shout, photo, facebook, twitter) {
+function add_checkin(venue_id, token, shout, facebook, twitter, photo) {
     var url = 'https://api.foursquare.com/v2/checkins/add/?venueId='+venue_id+'&oauth_token='+token+'&v=20140926&m=swarm&shout='+shout;
 
     var xhr = new XMLHttpRequest;
@@ -1115,9 +1116,9 @@ function add_checkin(venue_id, token, shout, photo, facebook, twitter) {
             }
 
             checkedin(id);
-            if (photo != '') {
-                //add_photo(id, 'checkin', token, photo);
-            }
+            /*if (photo != '') {
+                uploader.uploadImage(checkinpage.fileUrl, token, id);
+            }*/
         }
     }
 

@@ -5,7 +5,8 @@
         "location",
         "content_exchange",
         "content_exchange_source",
-        "usermetrics"
+        "usermetrics",
+        "accounts"
     ],
     "policy_version": 1.2
 }

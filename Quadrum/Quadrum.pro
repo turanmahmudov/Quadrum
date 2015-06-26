@@ -11,6 +11,9 @@ RESOURCES += Quadrum.qrc
 
 OTHER_FILES += Quadrum.apparmor \
                Quadrum.desktop \
+               quadrum.application \
+               quadrum.provider \
+               quadrum.service \
                Quadrum.png \
     js/scripts.js
 
