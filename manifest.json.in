@@ -5,13 +5,17 @@
     "title": "Quadrum",
     "hooks": {
         "Quadrum": {
-            "account-application": "Quadrum/quadrum.application",
-            "account-service": "Quadrum/quadrum.service",
             "apparmor": "Quadrum/Quadrum.apparmor",
-            "desktop": "Quadrum/Quadrum.desktop"
+            "desktop": "Quadrum/Quadrum.desktop",
+            "account-application": "Quadrum/quadrum.application",
+            "account-service": "Quadrum/quadrum.service"
+        },
+        "account-plugin": {
+            "account-provider": "Quadrum/quadrum.provider",
+            "account-qml-plugin": "Quadrum/account_plugin"
         }
     },
-    "version": "0.1",
+    "version": "0.2",
     "maintainer": "Turan Mahmudov <turan.mahmudov@gmail.com>",
     "framework": "ubuntu-sdk-14.10"
 }

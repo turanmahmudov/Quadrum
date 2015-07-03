@@ -31,35 +31,19 @@ MainView {
     width: units.gu(50)
     height: units.gu(75)
 
-    property var coord: {'latitude':positionSource.position.coordinate.latitude, 'longitude':positionSource.position.coordinate.longitude}
-
-    AccountServiceModel {
-        id: accounts
-        service: "quadrum"
-    }
-    ListView {
-        id: listView
-        anchors.fill: parent
-        model: accounts
-        delegate: Item {
-            width: parent.width
-            height: 60
-            AccountService {
-                id: accts
-                objectHandle: accountServiceHandle
-                onAuthenticated: { console.log("Access token is " + reply.AccessToken) }
-                onAuthenticationError: { console.log("Authentication failed, code " + error.code) }
-            }
-            Text {
-                anchors.fill: parent
-                text: providerName + ": " + displayName
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: accts.authenticate(null)
-                }
-            }
+    Item {
+        AccountServiceModel {
+            id: accounts
+            provider: "quadrum"
+            includeDisabled: true
+        }
+        ListView {
+            model: accounts
+            delegate: Text { text: model.serviceName + " on " + model.displayName }
         }
     }
+
+    property var coord: {'latitude':positionSource.position.coordinate.latitude, 'longitude':positionSource.position.coordinate.longitude}
 
     PositionSource {
         id: positionSource

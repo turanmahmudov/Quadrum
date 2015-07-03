@@ -59,6 +59,7 @@ Item {
                     id: placeinfos
                     anchors.top: placetitle.bottom
                     anchors.left: parent.left
+                    height: placeratingtext.text == '' ? placecategory.height : placerating.height
                     Rectangle {
                         visible: (placeratingtext.text == '') ? false : true
                         anchors.top: parent.top
@@ -97,7 +98,7 @@ Item {
                     width: parent.width
                     height: tip == '' ? 0 : placetip.height
                     anchors.top: placeinfos.bottom
-                    anchors.topMargin: units.gu(2)
+                    anchors.topMargin: units.gu(1)
                     anchors.left: parent.left
                     Text {
                         id: placetip

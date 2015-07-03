@@ -1,26 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<provider id="quadrum">
-  <name>Foursquare</name>
-  <icon>foursquare</icon>
-  <translations>account-plugins</translations>
-  <domains>.*foursquare\.com</domains>
-  <plugin>generic-oauth</plugin>
-  <single-account>true</single-account>
-  <template>
-    <group name="auth">
-      <setting name="method">oauth2</setting>
-      <setting name="mechanism">user_agent</setting>
-      <group name="oauth2">
-        <group name="user_agent">
-          <setting name="Host">www.facebook.com</setting>
-          <setting name="AuthPath">/dialog/oauth</setting>
-          <setting name="RedirectUri">https://www.facebook.com/connect/login_success.html</setting>
-          <setting name="Display">popup</setting>
-          <setting type="as" name="Scope">['publish_stream','status_update','user_photos']</setting>
-          <setting name="ClientId">412471239412</setting>
-          <setting type="as" name="AllowedSchemes">['https','http']</setting>
+<?xml version='1.0' encoding='UTF-8'?>
+<provider>
+    <name>Quadrum</name>
+    <icon>Quadrum.png</icon>
+    <description>Foursquare Client</description>
+    <domains>.*foursquare\.com</domains>
+    <plugin>generic-oauth</plugin>
+    <single-account>true</single-account>
+    <template>
+        <group name="auth">
+        <setting name="method">oauth2</setting>
+        <setting name="mechanism">user_agent</setting>
+            <group name="oauth2">
+                <group name="user_agent">
+                    <setting name="Host">www.foursquare.com</setting>
+                    <setting name="AuthPath">oauth2/authenticate</setting>
+                    <setting name="TokenPath">oauth2/access_token</setting>
+                    <setting name="RedirectUri">https://api.github.com/zen</setting>
+                    <setting name="ResponseType">token</setting>
+                    <setting name="ClientId">N2PTS3LRPQXFXJRLVPQ45AWORSELMYHVP2W1CKMD3A0M1KRP</setting>
+                    <setting name="ClientSecret">D1YM2VTUGRMTWKUBVWGNP0ACM05OGWRIFIXYBUYQM5O0QVHF</setting>
+                    <setting type="as" name="AllowedSchemes">['https']</setting>
+                    <setting type="b" name="ForceClientAuthViaRequestBody">true</setting>
+                </group>
+            </group>
         </group>
-      </group>
-    </group>
-  </template>
+    </template>
 </provider>
