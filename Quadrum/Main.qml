@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import Ubuntu.Components 1.2
+import Ubuntu.Components 1.3
 import QtQuick.LocalStorage 2.0
 import QtLocation 5.0
 import QtPositioning 5.2
@@ -31,23 +31,11 @@ MainView {
     width: units.gu(50)
     height: units.gu(75)
 
-    Item {
-        AccountServiceModel {
-            id: accounts
-            provider: "quadrum"
-            includeDisabled: true
-        }
-        ListView {
-            model: accounts
-            delegate: Text { text: model.serviceName + " on " + model.displayName }
-        }
-    }
-
     property var coord: {'latitude':positionSource.position.coordinate.latitude, 'longitude':positionSource.position.coordinate.longitude}
 
     PositionSource {
         id: positionSource
-        updateInterval: 60000 //60 seconds (?)
+        updateInterval: 1000 //1 seconds (?)
         active: true
         onPositionChanged: {
             mainView.coord.latitude = positionSource.position.coordinate.latitude;

@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import Ubuntu.Components 1.1
+import Ubuntu.Components 1.3
 import QtQuick.LocalStorage 2.0
 import Ubuntu.Components.ListItems 1.0 as ListItem
 import "../js/scripts.js" as Scripts
@@ -13,6 +13,18 @@ Item {
     property bool finished: false
 
     function nearby_places() {
+        if (!mainView.coord.latitude || !mainView.coord.longitude) {
+            finished = true;
+            noitem.visible = true;
+            timer.start()
+
+            return false;
+        } else {
+            finished = false
+            noitem.visible = false;
+            timer.stop()
+        }
+
         Scripts.nearby_places(mainView.coord.latitude, mainView.coord.longitude, Scripts.getKey('access_token'));
     }
 
@@ -103,5 +115,25 @@ Item {
             id: activity
             running: true
         }
+    }
+
+    Item {
+        id: noitem
+        visible: false
+        width: noitemlabel.width
+        anchors.centerIn: parent
+
+        Label {
+            id: noitemlabel
+            text: i18n.tr("Can't find your location. Waiting for signal...")
+        }
+    }
+
+    Timer {
+        id: timer
+        interval: 1000
+        running: false
+        repeat: true
+        onTriggered: nearby_places()
     }
 }

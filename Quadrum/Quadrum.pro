@@ -13,9 +13,10 @@ OTHER_FILES += Quadrum.apparmor \
                Quadrum.desktop \
                quadrum.application \
                quadrum.provider \
+               quadrump.json \
                quadrum.service \
                Quadrum.png \
-    js/scripts.js
+               js/scripts.js
 
 #specify where the config files are installed to
 config_files.path = /Quadrum

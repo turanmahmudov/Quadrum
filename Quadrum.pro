@@ -7,6 +7,7 @@ TEMPLATE = subdirs
 load(ubuntu-click)
 
 SUBDIRS += Quadrum
+SUBDIRS += Quadrum/account_plugin
 
 # specify the manifest file, this file is required for click
 # packaging and for the IDE to create runconfigurations

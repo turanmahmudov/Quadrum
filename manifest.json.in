@@ -11,11 +11,12 @@
             "account-service": "Quadrum/quadrum.service"
         },
         "account-plugin": {
+            "apparmor": "Quadrum/quadrump.json",
             "account-provider": "Quadrum/quadrum.provider",
             "account-qml-plugin": "Quadrum/account_plugin"
         }
     },
-    "version": "0.2",
+    "version": "0.3",
     "maintainer": "Turan Mahmudov <turan.mahmudov@gmail.com>",
-    "framework": "ubuntu-sdk-14.10"
+    "framework": "ubuntu-sdk-15.04"
 }

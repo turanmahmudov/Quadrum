@@ -51,7 +51,6 @@ function deleteKey(key) {
 
 // What's good here
 function nearby_places(lat, lng, token) {
-    console.log(lat)
     whatsgoodhere.finished = false;
     var url = 'https://api.foursquare.com/v2/venues/search?ll='+lat+','+lng+'&oauth_token='+token+'&v=20140926&limit=10';
 
